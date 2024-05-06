@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ Accordion</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: "Work Sans", sans-serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        ::-webkit-scrollbar {
+            visibility: hidden;
+            opacity: 0;
+            width: 0;
+        }
+
+
+    </style>
+</head>
+
+<body class="grid place-items-center bg-rose-200">
+    <img class="absolute top-0 left-0 w-full" src="header.png" alt="" />
+    <div id="app" class="z-10 w-2/5">
+        <div class="max-h-[80vh] w-full bg-white rounded-tl-xl rounded-tr-xl rounded-bl-xl rounded-br-xl p-10 shadow-lg flex flex-col gap-6">
+            <div class="flex flex-row items-center gap-5 my-2">
+                <img width="35" src="icon-star.svg">
+                <p class="text-5xl font-bold">FAQs</p>
+            </div>
+            <div class="overflow-y-auto">
+                <div class="flex flex-col gap-4">
+                    <button class="hover:text-rose-400" @click="changeIcon(0)">
+                        <div class="flex justify-between font-semibold items-center">
+                            What is Frontend Mentor, and how will it help me?
+                            <img width="25" :src="icon[0] ? 'icon-plus.svg': 'icon-minus.svg' " alt="" />
+                        </div>
+                    </button>
+                    <p class="text-slate-500 text-sm" :class="{ 'hidden': !isVisible[0] }">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in pulvinar dolor, eget cursus
+                        odio. Duis nisl orci, porttitor at diam at, auctor posuere velit. Aenean sit amet lorem egestas,
+                        lobortis nisl nec, dapibus neque. Aliquam vitae tempus diam. Morbi auctor tristique urna, eget
+                        ultricies elit dignissim eget. Praesent tortor.
+                    </p>
+                </div>
+                <hr class="my-5">
+                <div class="flex flex-col gap-4">
+                    <button class="hover:text-rose-400" @click="changeIcon(1)">
+                        <div class="flex justify-between font-semibold items-center">
+                            What is Frontend Mentor?
+                            <img width="25" :src="icon[1] ? 'icon-plus.svg': 'icon-minus.svg' " alt="" />
+                        </div>
+                    </button>
+                    <p class="text-slate-500 text-sm" :class="{ 'hidden': !isVisible[1] }">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in pulvinar dolor, eget cursus
+                        odio. Duis nisl orci, porttitor at diam at, auctor posuere velit. Aliquam vitae tempus diam.
+                        Morbi auctor tristique urna, eget
+                        ultricies elit dignissim eget. Praesent tortor.
+                    </p>
+                </div>
+                <hr class="my-5">
+                <div class="flex flex-col gap-4">
+                    <button class="hover:text-rose-400" @click="changeIcon(2)">
+                        <div class="flex justify-between font-semibold items-center">
+                            how will it help me?
+                            <img width="25" :src="icon[2] ? 'icon-plus.svg': 'icon-minus.svg' " alt="" />
+                        </div>
+                    </button>
+                    <p class="text-slate-500 text-sm" :class="{ 'hidden': !isVisible[2] }">
+                        Aliquam vitae tempus diam. Morbi auctor tristique urna, eget
+                        ultricies elit dignissim eget. Praesent tortor.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    isVisible: [false, false, false],
+                    icon: [true, true, true],
+                };
+            },
+
+            methods: {
+                changeIcon(index) {
+                    this.isVisible[index] = !this.isVisible[index];
+                    this.icon[index] = !this.icon[index];
+                }
+            }
+
+
+        }).mount('#app');
+    </script>
+</body>
+
+</html>
